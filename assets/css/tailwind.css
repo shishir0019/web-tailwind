@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* dev */
+.t {
+    border: 1px solid red;
+}
+
+/* components */
+
+.btn-big {
+    @apply bg-black text-white rounded-md whitespace-nowrap flex items-center justify-center px-8 py-1.5 text-base font-medium md:text-lg md:px-10 w-64;
+    width: 100%;
+}
+
+.btn-big:hover {
+    @apply bg-indigo-900;
+}
+
+/* typography */
+
+.h1 {
+    @apply text-2xl font-extrabold tracking-tight sm:text-5xl xl:text-6xl;
+}
+
+.h2 {
+    @apply text-3xl font-extrabold tracking-tight sm:text-4xl;
+}
+
+.h3 {
+    @apply text-3xl font-extrabold;
+}
+
+.h4 {
+    @apply text-base sm:text-lg md:text-xl;
+}
+
+.bg-beige {
+    --tw-bg-opacity: 1;
+    background-color: rgba(251,250,246,var(--tw-bg-opacity));
+}
+
+.text-beige-dark {
+    --tw-text-opacity: 1;
+    color: rgba(236,235,214,var(--tw-text-opacity));
+}
+
+.bg-indigo-dark {
+    --tw-bg-opacity: 1;
+    background-color: rgba(32,31,123,var(--tw-bg-opacity));
+}
+
+.grecaptcha-badge {
+    @apply invisible;
+  }
+  
+  @layer base {
+    body {
+      @apply text-gray-500;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      @apply text-gray-800;
+    }
+  }
+  
+  @layer components {
+    .btn-primary {
+      @apply border border-transparent text-white bg-gray-800 hover:bg-indigo-800 text-center rounded-md;
+    }
+    .btn-secondary {
+      @apply border border-gray-400 rounded-md shadow text-indigo-800 bg-white hover:border-indigo-400 text-center;
+    }
+    .form-range {
+      @apply appearance-none outline-none border-none h-0.5 min-w-full bg-indigo-500
+    }
+    .form-range::before {
+      content: '';
+      bottom: 0.563rem;
+      @apply bg-indigo-800 left-0 absolute h-1 w-px
+    }
+    .form-range::after {
+      content: '';
+      bottom: 0.563rem;
+      @apply bg-indigo-800 right-0 absolute h-1 w-px
+    }
+    .form-range::-webkit-slider-thumb {
+      height: 0.938rem;
+      width: 0.938rem;
+      box-shadow: 0 0 0 8px rgba(63, 61, 177, 0.2);
+      @apply bg-indigo-800 outline-none appearance-none rounded-full cursor-pointer border-none
+    }
+    .form-range::-moz-range-thumb {
+      height: 0.938rem;
+      width: 0.938rem;
+      box-shadow: 0 0 0 8px rgba(63, 61, 177, 0.2);
+      @apply bg-indigo-800 outline-none appearance-none rounded-full cursor-pointer border-none
+    }
+  }
+  
+  @layer utilities {
+    @variants hover, focus {
+      .filter-none {
+        filter: none;
+      }
+      .filter-grayscale {
+        filter: grayscale(100%);
+      }
+    }
+  }

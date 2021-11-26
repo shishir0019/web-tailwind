@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
+    "allowJs": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "strict": true,
+    "noEmit": true,
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "importsNotUsedAsValues": "preserve",
+    "paths": { "~/*": ["./*"], "@/*": ["./*"] },
+    "types": [
+      "@nuxtjs/auth-next",
+      "@types/node",
+      "@nuxt/types",
+      "nuxt-i18n",
+      "@nuxt/vue-app",
+      "nuxt-leaflet"
+    ]
+  },
+  "exclude": ["node_modules", "node_modules_dev", "node_modules_prod"]
+}

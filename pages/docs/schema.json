@@ -1,0 +1,262 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Cto API",
+    "version": "1.0.0",
+    "description": "This is the description.",
+    "termsOfService": "https://www.cto.codes/legal",
+    "contact": {
+      "name": "Developer",
+      "url": "https://www.cto.codes",
+      "email": "developer@cto.codes"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://www.cto.codes/api",
+      "variables": {
+        "scheme": {
+          "description": "The Data Set API is accessible only via https ",
+          "enum": ["https"],
+          "default": "https"
+        }
+      }
+    }
+  ],
+  "tags": [
+    {
+      "name": "tests",
+      "description": "Test with something."
+    }
+  ],
+  "paths": {
+    "/tests": {
+      "get": {
+        "tags": ["tests"],
+        "operationId": "list-all-tests",
+        "summary": "List all tests",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/flow"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      },
+      "post": {
+        "tags": ["tests"],
+        "operationId": "create-flow",
+        "summary": "Create new flow",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the flow"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/flow"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid flow value",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/tests/{id}": {
+      "get": {
+        "tags": ["tests"],
+        "operationId": "list-flow",
+        "summary": "Get specific flow",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "id of resource"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/flow"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Invalid workflow value",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      },
+      "patch": {
+        "tags": ["tests"],
+        "operationId": "update-flow",
+        "summary": "Update flow",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "id of resource"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Updated name of the flow"
+                  },
+                  "url": {
+                    "type": "string",
+                    "description": "Updated url of the flow"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/flow"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid workflow value",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": ["tests"],
+        "operationId": "delete-tests",
+        "summary": "Delete tests",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "id of resource"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tests"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "tests": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "lastUpdate": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
